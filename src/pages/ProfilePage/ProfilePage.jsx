@@ -17,7 +17,7 @@ import { changeMenuActive } from "../../store/menuSlice";
 import "../MyAds/MyAds.css"
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
-// const parOne = window.Telegram.WebApp.initDataUnsafe.user.id;
+// const parOne = 2144832745;
 // const parTwo = 1;
 const ProfilePage = ({ ...props }) => {
   const [responce, setResponce] = useState(null);

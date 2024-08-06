@@ -32,6 +32,7 @@ const FirstBlock = ({
   tonValue,
   task,
   agree = false,
+  setShow
 }) => {
 
   const [badPhotos, setBadPhotos] = useState([])
@@ -136,7 +137,7 @@ const FirstBlock = ({
     >
       {isVisible && (
         <Suspense fallback={<BlockSpinner style = { photos.length > 0 ? {minHeight : "282px"} :{minHeight : "144px"}} />}>
-          <Block {...props} photos={ end ? badPhotos : photos} />
+          <Block setShow = {setShow} {...props} photos={ end ? badPhotos : photos} />
         </Suspense>
       )}
 

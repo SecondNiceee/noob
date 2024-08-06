@@ -58,7 +58,7 @@ const Case = ({
             <div className={cl.one}>
               <div onClick={() => {
                                 window.Telegram.WebApp.openTelegramLink(
-                                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" + String(card.id) + "m" + window.Telegram.WebApp.initDataUnsafe.user.id
+                                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" + String(card.id) + "m" + 2144832745
                                 );
               } } className={cl.circle}>
                 
@@ -129,7 +129,7 @@ const Case = ({
             </div>
             <div className={cl.circle} onClick={() => {
                                 window.Telegram.WebApp.openTelegramLink(
-                                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" + String(card.id) + "m" + window.Telegram.WebApp.initDataUnsafe.user.id
+                                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" + String(card.id) + "m" + 2144832745
                                 );
               } } >
               <svg

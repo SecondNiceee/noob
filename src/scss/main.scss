@@ -154,6 +154,85 @@ body { width: 100%; height: auto;  background: rgb(24, 34, 45); }
   animation: anime 10s;
 }
 
+.black__wrapper{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  background-color: black;
+  opacity: 0.5;
+}
+button{
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+.popup{
+  opacity: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  /* transform: translateY(10px); */
+  z-index: 3500;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  align-items: center;
+    position: absolute;
+    width: 60vw;
+}
+.popup__bottom{
+  gap: 30px;
+  display: flex;
+    justify-content: space-around;
+    button{
+      background-color: white;
+      border: none;
+      border: 1px solid black;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+}
+.wrapper__popup{
+  opacity: 0;
+  transition: 0.2s;
+}
+.show-enter{
+  opacity: 1;
+  transition: 0.2s;
+}
+.show-enter-active{
+  opacity: 1;
+  transition: 0.2s;
+}
+.show-enter-done{
+  opacity: 1;
+  transition: 0.2s;
+}
+.deleteResponse{
+    padding: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+.wrapper__popup{
+  position: fixed;
+  z-index: 20000;
+  left: 0;
+  top: 0;
+}
+
+
 
 // .slider-appear-enter{
 //   opacity: 0;

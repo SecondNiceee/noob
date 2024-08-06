@@ -10,6 +10,7 @@ const FirstMain = (
       ordersInformation,
       setDetailsActive,
       orderStatus,
+      setShow
     }
   ) => {
 
@@ -54,6 +55,7 @@ const FirstMain = (
           ordersInformation.map((e, i) => {
             return (
               <FirstBlock
+                setShow = {setShow}
                 index={i}
                 isWatched={watchedArr.includes(e.id) ? true : false}
                 key={i}

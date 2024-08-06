@@ -23,6 +23,7 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchAllValues } from "./store/saves";
 import { fetchResponses } from "./store/responses";
 
+
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
@@ -31,6 +32,7 @@ const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const ProfilePage = lazy( () => import("./pages/ProfilePage/ProfilePage") )
+const AllResponses = lazy( () => import("./pages/AllResponses/AllResponses") )
 
 const MyLoader = () => {
   return (
@@ -93,6 +95,16 @@ const AnimatedSwitch = () => {
             element={
               <Suspense fallback={<MyLoader />}>
                 <First isPage = {true} />
+              </Suspense>
+            }
+          />
+
+
+          <Route
+            path="/AllResponses"
+            element={
+              <Suspense fallback={<MyLoader />}>
+                <AllResponses isPage = {true} />
               </Suspense>
             }
           />
@@ -186,12 +198,13 @@ function App() {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
     dispatch(fetchMyOrders(1));
-    dispatch(getCategorys());
-    dispatch(getSubCategorys());
-    dispatch(getCategorys());
-    dispatch(getSubCategorys());
-    dispatch(fetchAllShablons());
-    dispatch(fetchAllValues());
+    dispatch(fetchAllValues())
+    // dispatch(getCategorys());
+    // dispatch(getSubCategorys());
+    // dispatch(getCategorys());
+    // dispatch(getSubCategorys());
+    // dispatch(fetchAllShablons());
+    // dispatch(fetchAllValues());
   }, [dispatch]);
 
   useEffect(() => {

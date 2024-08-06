@@ -2,6 +2,40 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import makeNameFiles from "../functions/makeNameFiles";
 import makeNewFile from "../functions/newMakeFile";
+
+
+export const fetchValues = createAsyncThunk( 
+  "fetchValues" , 
+  async function (params) {
+    let axiosUsers = await axios.get("https://back-birga.ywa.su/user/findAll")
+    let numberUsers = axiosUsers.data.length
+    let imTwo = await axios.get("https://back-birga.ywa.su/advertisement/findAll")
+    let advertisements = imTwo.data
+    let numberAdvertisements = advertisements.length
+    let numberCompletedAdvertisements = 0
+    let numberInProcessAdvertisements = 0
+    for (let i = 0; i < numberAdvertisements; i++) {
+      if (advertisements[i].status === "inProcess"){
+        numberInProcessAdvertisements += 1
+      }
+      if (advertisements[i].status === "completed"){
+        numberCompletedAdvertisements += 1
+      }
+      
+    }
+    let a = await axios.get("https://back-birga.ywa.su/response/findAll")
+    let responseNumber = a.data.length
+    return {
+      users : numberUsers,
+      advertisements : numberAdvertisements,
+      reponses : responseNumber,
+      completedAdvertisements : numberCompletedAdvertisements,
+      advertisementsInProcess : numberInProcessAdvertisements,
+    }
+  }
+
+
+)
 export const deleteShablon = createAsyncThunk(
   "shablon/deleteShablon",
   async function(id){
@@ -51,7 +85,7 @@ export const postShablon = createAsyncThunk(
         let im = await axios.post("https://back-birga.ywa.su/template" , data[0] , 
         {
           params : {
-            userId : window.Telegram.WebApp.initDataUnsafe.user.id
+            userId : 2144832745
           },
           headers: {
             "Content-Type" :'multipart/form-data',
@@ -83,8 +117,8 @@ export const fetchAllShablons = createAsyncThunk(
         let im = await axios.get("https://back-birga.ywa.su/template/findByUser" , 
             {
                 params : {
-                    userId : window.Telegram.WebApp.initDataUnsafe.user.id 
-                    // userId : window.Telegram.WebApp.initDataUnsafe.user.id 
+                    userId : 2144832745 
+                    // userId : 2144832745 
                 }
             }
         )
@@ -126,6 +160,15 @@ export const fetchAllShablons = createAsyncThunk(
 const shablon = createSlice({
   name: "shablon",
   initialState: {
+
+    value : {
+      users : 0,
+      advertisements : 0,
+      reponses : 0,
+      completedAdvertisements : 0,
+      advertisementsInProcess : 0,
+
+    },
     status: null,
     shablonsArr: [
       { name: "Шаблон 1", description: "Это шаблон один хахахах", photos: [] },
@@ -136,6 +179,12 @@ const shablon = createSlice({
     
   },
   extraReducers : (builder) => {
+
+
+    builder.addCase(fetchValues.fulfilled , (state , action) => {
+      state.value = action.payload
+    })
+
     builder.addCase(fetchAllShablons.fulfilled , (state , action) => {
         state.shablonsArr = action.payload
     })

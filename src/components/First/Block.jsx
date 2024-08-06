@@ -30,6 +30,8 @@ const Block = ({
   responseCounter,
   viewsNumber,
   category,
+  user,
+  setShow
 }) => {
   const dispatch = useDispatch();
   const tonConstant = useSelector((state) => state.ton.value);
@@ -51,7 +53,8 @@ const Block = ({
           <FirstMainMiddle time={time} />
 
           <MainBottom 
-          {...{tonConstant, tonValue, isMyAds, myAdsFunc, isButton, end, id, agree, task, isResponce, setDetailsActive,index, dispatch,deleteFunction}}
+            setShow = {setShow}
+          {...{tonConstant, tonValue, isMyAds, myAdsFunc, isButton, end, id, agree, task, isResponce, setDetailsActive,index, dispatch,deleteFunction,user }}
             />
         </div>
       ) 

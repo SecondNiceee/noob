@@ -3,7 +3,35 @@ import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
 
-
+export const fetchALLResponses = createAsyncThunk(
+    "fetchResponseALLResponses",
+    async function ([page]) {
+        try{
+            
+            let responces = await axios.get("https://back-birga.ywa.su/response/findAll" , {
+                params : {
+                    page : page,
+                    limit : 4,
+                }
+            })
+            
+            let localResponses = responces.data
+            for (let i = 0; i < localResponses.length; i++){
+                let photos = []
+                if (localResponses[i].photos){
+                    photos = await makeNewFile(localResponses[i].folder, localResponses[i].photos)
+                }
+                console.log(photos)
+                localResponses[i].photos = photos
+            }
+            return localResponses
+        }
+        catch(e){
+            alert(e)
+            console.warn(e)
+        }
+    }
+)
 
 export const fetchResponseByAdvertisement = createAsyncThunk(
     "fetchResponseByAdvertisement",
@@ -156,7 +184,7 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get('https://back-birga.ywa.su/response/findByUser' , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : 2144832745,
                 page : par[1],
                 limit : 4
                 
@@ -270,6 +298,8 @@ const responses = createSlice({
     name : 'responses',
     initialState : {
         status : null,
+        ALLReponses : [],
+        ALLReponsesStatus : null,
         responsesByAStatus : null,
         responses : [],
         responsesByA : []
@@ -285,23 +315,38 @@ const responses = createSlice({
         }
     },
     extraReducers : builder => {
+        
 
         builder.addCase(fetchResponseByAdvertisement.fulfilled, ((state , action) => {
             state.responsesByAStatus = "completed"
             state.responsesByA.push(...action.payload)
-            if (action.payload.length < 4){
+            if (action.payload.length < 6){
                 state.responsesByAStatus = "all"
             }
         }))
 
-        builder.addCase(fetchResponseByAdvertisement.pending, ((state , action) => {
-            if (state.responsesByA.length === 0){
-                state.responsesByAStatus = "pending"
+        builder.addCase(fetchALLResponses.pending , ( (state, action) => {
+            if (state.ALLReponses.length === 0){
+                state.ALLReponsesStatus = "pending"
             }
             else{
-                state.responsesByAStatus = "completed"
+                state.ALLReponsesStatus = "complete"
             }
-        }))
+        } ))
+
+        
+        builder.addCase(fetchALLResponses.fulfilled , ( (state, action) => {
+            state.ALLReponses.push(...action.payload)
+            if (action.payload.length < 4){
+                state.ALLReponsesStatus = "all"
+            }
+            else{
+                state.ALLReponsesStatus = "complete"
+            }
+        } ))
+
+
+
 
         builder.addCase(deleteResponse.fulfilled, ((state , action) => {
             state.responses = state.responses.filter((e , i ) => e.id !== action.payload)

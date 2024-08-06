@@ -21,11 +21,24 @@ import CardPage from "../CardPage/CardPage";
 import axios from "axios";
 import makeNewFile from "../../functions/newMakeFile";
 import { addResponce } from "../../store/information";
+import Popup from "../Popup";
 
 let isDetailsActiveVar = false;
 let pageValue = true;
 let localResponce;
 let localStep;
+
+
+
+
+
+
+
+
+
+
+
+
 const First = ({isPage = false}) => {
 
 
@@ -138,7 +151,7 @@ const First = ({isPage = false}) => {
 
       if (secFilteredArray[isDetailsActive.id].responces){
         if (secFilteredArray[isDetailsActive.id].responces.find((e) => 
-          Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id))
+          Number(e.user.id) === 2144832745))
 
         {
           return true 
@@ -470,7 +483,7 @@ const forwardFunction = useCallback(() => {
         // setShablon({...shablon , isActive : false})
       }
       if (buttonId === "save") {
-        postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id );
+        postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
         // mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
@@ -494,7 +507,6 @@ const subCategorys = useSelector((state) => state.categorys.subCategory);
 
 
 
-
 const firstRef = useRef(null)
 
 // useEffect( () => {
@@ -510,9 +522,9 @@ const firstRef = useRef(null)
 // } , [] )
 
 
-// window.Telegram.WebApp.initDataUnsafe.user.id
+// 2144832745
 
-// window.Telegram.WebApp.initDataUnsafe.user.id
+// 2144832745
 
 useEffect(() => {
   MainButton.onClick(forwardFunction);
@@ -603,7 +615,44 @@ useEffect(() => {
     }
   } , [isPage , pageAdvertisement, isDetailsActive.id ,ordersInformation, secFilteredArray] )
 
+  const [isShow , setShow] = useState({
+    isActive : false,
+    id : 0,
+    userId : 0,
+    taskName : "",
+    
+  })  
 
+
+  const extraDeleteFunction = useCallback(  () => {
+    async function deleteAd(params) {
+      try {
+        await axios.delete("https://back-birga.ywa.su/advertisement", {
+          params: {
+            id: isShow.id,
+          },
+        });
+  
+        await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
+          params : {
+            "chatId" : isShow.userId,
+            "buttonUrl" : "https://ya.ru/",
+            "text" : "📣 ‼️Ваше объявление «" + isShow.taskName + "» было удалено в связи с нарушениями правил Коннект Биржи"
+          }
+        })
+        setShow(false)
+
+      } catch (e) {
+        alert("Не удалось удалить задание , возможно оно уже блыо удалено.");
+        console.warn(e);
+      }
+    }
+
+    deleteAd()
+
+
+
+  }, [isShow] )
 
   return (
     <div className="first-container">
@@ -626,6 +675,9 @@ useEffect(() => {
 
 
         <AllTasks
+
+
+        setShow = {setShow}
         setFilters={setFilters}
         setSubCategory = {setSubCategory}
         filters = {filters}
@@ -719,9 +771,15 @@ useEffect(() => {
               style = {pageValue && isPage ? {transform : "translateX(0%)"} : {}}
               // className={}
               orderInformation={detailsAdertisement }
-
+ 
             />
           </CSSTransition>
+
+
+
+      <CSSTransition classNames={"show"} in = {isShow.isActive} timeout={200} mountOnEnter unmountOnExit >
+          <Popup setShow={setShow} clickHandler={extraDeleteFunction} text={"Удалить это задание?"} />
+      </CSSTransition>
 
 
         

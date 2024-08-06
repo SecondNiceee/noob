@@ -16,7 +16,8 @@ const AllTasks = ({
   setCategoryOpen,
   filters,
   setFilters,
-  setSubCategory
+  setSubCategory,
+  setShow
 }) => {
 
 
@@ -100,6 +101,7 @@ const AllTasks = ({
       { (orderStatus === 'complete' || orderStatus === 'all') && tonConstant !== 0 ? (
         <>
           <FirstMain
+            setShow = {setShow}
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
             orderStatus = {orderStatus}
             setDetailsActive={setDetailsActive}
