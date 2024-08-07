@@ -206,7 +206,7 @@ function App() {
   const me = useSelector((state) => state.telegramUserInfo);
   const availableArray = ["1059731608" , "5533417473",  "1392120153" ]
   useEffect( () => {
-    if (!(String(window.Telegram.WebApp.initDataUnsafe.user.id) in availableArray)){
+    if (!(availableArray.includes(String(window.Telegram.WebApp.initDataUnsafe.user.id)))){
         alert("У вас нет доступа к этому приложению")
         window.Telegram.WebApp.close()
     }
