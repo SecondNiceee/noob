@@ -15,7 +15,7 @@ import "./css/style.css";
 import FirstMenu from "./pages/FirstMenu/FirstMenu";
 
 import { fetchTon } from "./store/ton";
-import { fetchUserInfo } from "./store/telegramUserInfo";
+import telegramUserInfo, { fetchUserInfo } from "./store/telegramUserInfo";
 import { fetchMyOrders, fetchTasksInformation } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
@@ -204,6 +204,13 @@ function App() {
   window.Telegram.WebApp.expand();
 
   const me = useSelector((state) => state.telegramUserInfo);
+  const availableArray = ["1059731608" , "5533417473",  "1392120153" ]
+  useEffect( () => {
+    if (!(String(window.Telegram.WebApp.initDataUnsafe.user.id) in availableArray)){
+        alert("У вас нет доступа к этому приложению")
+        window.Telegram.WebApp.close()
+    }
+  }  )
 
   useEffect(() => {
     dispatch(fetchTon());
