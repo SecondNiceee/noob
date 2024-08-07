@@ -11,7 +11,10 @@ const Popup = ({clickHandler , text , setShow}) => {
     }}>
       </div>
       <div className="popup">
-        <p>{text}</p>
+        <p style={{
+          color : "white",
+          fontFamily : "SF Pro Display"
+        }}>{text}</p>
         <div className="popup__bottom">
           <button onClick={clickHandler} className="button">Да</button>
           <button onClick={closeFunction} className="button">Нет</button>

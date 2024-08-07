@@ -171,7 +171,7 @@ const AllResponses = () => {
     </div>
 
     <CSSTransition classNames={"show"} in = {isShow.isActive} timeout={200} mountOnEnter unmountOnExit >
-          <Popup setShow={setShow} clickHandler={extraDeleteFunction} text={"Удалить это задание?"} />
+          <Popup setShow={setShow} clickHandler={extraDeleteFunction} text={"Удалить этот отклик?"} />
     </CSSTransition>
     </>
   );
