@@ -1,0 +1,15 @@
+<svg width="65.000000" height="65.000000" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip46_733">
+			<rect id="ton_symbol" width="65.000000" height="65.000000" transform="translate(0.000000 -0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="ton_symbol" width="65.000000" height="65.000000" transform="translate(0.000000 -0.500000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip46_733)">
+		<path id="Vector" d="M32.5 64.5C50.44 64.5 65 49.94 65 32C65 14.05 50.44 -0.5 32.5 -0.5C14.55 -0.5 0 14.05 0 32C0 49.94 14.55 64.5 32.5 64.5Z" fill="#0098EA" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="Vector" d="M43.59 17.63L21.4 17.63C17.32 17.63 14.73 22.04 16.78 25.6L30.48 49.34C31.37 50.89 33.61 50.89 34.51 49.34L48.21 25.6C50.326 22.04 47.67 17.63 43.59 17.63L43.59 17.63ZM30.47 42.22L27.49 36.44L20.329 23.57C19.81 22.75 20.4 21.69 21.39 21.69L30.47 21.69L30.47 42.22L30.47 42.22ZM44.7 23.57L37.5 36.45L34.52 42.22L34.52 21.69L43.59 21.69C44.58 21.69 45.17 22.74 44.7 23.57Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>
