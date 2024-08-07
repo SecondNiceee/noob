@@ -20,7 +20,7 @@ import AboutReaction from "../MyAds/components/AboutReaction";
 import CardPage from "../CardPage/CardPage";
 import axios from "axios";
 import makeNewFile from "../../functions/newMakeFile";
-import { addResponce } from "../../store/information";
+import { addResponce, deleteAdvertisements } from "../../store/information";
 import Popup from "../Popup";
 
 let isDetailsActiveVar = false;
@@ -640,6 +640,8 @@ useEffect(() => {
             "text" : "📣 ‼️Ваше объявление «" + isShow.taskName + "» было удалено в связи с нарушениями правил Коннект Биржи"
           }
         })
+
+        dispatch(deleteAdvertisements(isShow.id))
         setShow(false)
 
       } catch (e) {
@@ -753,6 +755,8 @@ useEffect(() => {
           />
 
         </CSSTransition>
+
+        
 
 
 

@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
+import { deleteAdvertisement } from "./saves";
 
 export const addWatch = createAsyncThunk(
   "information/addWatch",
@@ -390,6 +391,9 @@ const information = createSlice({
         return myAd;
       });
     },
+    deleteAdvertisement(state , action){
+      state.orderInformations = state.orderInformations.filter( (e) => e.id !== action.payload )
+    },
     addMyAds(state, action) {
       state.myAdsArray.push(action.payload);
     },
@@ -489,5 +493,6 @@ export const {
   addResponce,
   changeStatus,
   getMoreMyAds,
+  deleteAdvertisements
 } = information.actions;
 export default information.reducer;

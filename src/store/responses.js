@@ -312,6 +312,9 @@ const responses = createSlice({
         clearResponsesByA(state , action){
             state.responsesByAStatus = "pending"
             state.responsesByA = []
+        },
+        deleteResponse(state ,action){
+            state.ALLReponses = state.ALLReponses.filter(e => e.id !== action.payload)
         }
     },
     extraReducers : builder => {

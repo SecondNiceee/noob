@@ -19,9 +19,10 @@ import { fetchUserInfo } from "./store/telegramUserInfo";
 import { fetchMyOrders } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
-import { fetchAllShablons } from "./store/shablon";
+import { fetchAllShablons, fetchValues } from "./store/shablon";
 import { fetchAllValues } from "./store/saves";
 import { fetchResponses } from "./store/responses";
+import Values from "./pages/Values";
 
 
 const First = lazy(() => import("./pages/First/First"));
@@ -139,6 +140,16 @@ const AnimatedSwitch = () => {
             }
           />
 
+
+<Route
+            path="/All"
+            element={
+              <Suspense fallback={<MyLoader />}>
+                <Values/>
+              </Suspense>
+            }
+          />
+
           <Route
             path="/Profile"
             element={
@@ -195,10 +206,11 @@ function App() {
   const me = useSelector((state) => state.telegramUserInfo);
 
   useEffect(() => {
-    dispatch(fetchTon());
-    dispatch(fetchUserInfo());
+    // dispatch(fetchTon());
+    // dispatch(fetchUserInfo());
     dispatch(fetchMyOrders(1));
-    dispatch(fetchAllValues())
+    dispatch(fetchValues())
+    // dispatch(fetchAllValues())
     // dispatch(getCategorys());
     // dispatch(getSubCategorys());
     // dispatch(getCategorys());
@@ -207,11 +219,11 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (me.id !== "" && me) {
-      dispatch(fetchResponses([me, 1]));
-    }
-  }, [dispatch, me]);
+  // useEffect(() => {
+  //   if (me.id !== "" && me) {
+  //     dispatch(fetchResponses([me, 1]));
+  //   }
+  // }, [dispatch, me]);
 
   const _ = require("lodash");
   const a = { people: { x: 2 } };

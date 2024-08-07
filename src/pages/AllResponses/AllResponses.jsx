@@ -1,7 +1,7 @@
 import React from "react";
 import Photos from "../../components/First/FirstMain/Photos";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchALLResponses } from "../../store/responses";
+import { deleteResponse, fetchALLResponses } from "../../store/responses";
 import { useState } from "react";
 import { useCallback } from "react";
 import { useEffect } from "react";
@@ -47,7 +47,7 @@ const ModerResponse = ({ information, photos ,e,  setShow }) => {
 const AllResponses = () => {
 
     const dispatch = useDispatch();
-    
+
     const isMenuActive = useSelector((state) => state.menu.value);
     const setMenuActive = useCallback(
         (arg) => {
@@ -121,7 +121,9 @@ const AllResponses = () => {
             "text" : "📣 ‼️Ваш отклик «" + text  + "» был удален в связи с нарушениями правил Коннект Биржи"
           }
         })
+        dispatch(deleteResponse(isShow.id))
         setShow(false)
+        
 
       } catch (e) {
         alert("Не удалось удалить задание , возможно оно уже блыо удалено.");
