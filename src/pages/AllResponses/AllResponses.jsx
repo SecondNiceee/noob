@@ -1,7 +1,7 @@
 import React from "react";
 import Photos from "../../components/First/FirstMain/Photos";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteResponse, fetchALLResponses } from "../../store/responses";
+import { deleteResponse, deleteResponseLocal, fetchALLResponses } from "../../store/responses";
 import { useState } from "react";
 import { useCallback } from "react";
 import { useEffect } from "react";
@@ -121,12 +121,12 @@ const AllResponses = () => {
             "text" : "📣 ‼️Ваш отклик «" + text  + "» был удален в связи с нарушениями правил Коннект Биржи"
           }
         })
-        dispatch((isShow.id))
+        dispatch(deleteResponseLocal(isShow.id))
         setShow(false)
         
 
       } catch (e) {
-        alert("Не удалось удалить задание , возможно оно уже блыо удалено.");
+        alert("Не удалось удалить отклик , возможно оно уже был удален.");
         console.warn(e);
       }
     }
