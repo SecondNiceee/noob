@@ -313,7 +313,7 @@ const responses = createSlice({
             state.responsesByAStatus = "pending"
             state.responsesByA = []
         },
-        deleteResponse(state ,action){
+        deleteResponseLocal(state ,action){
             state.ALLReponses = state.ALLReponses.filter(e => e.id !== action.payload)
         }
     },
@@ -376,5 +376,5 @@ const responses = createSlice({
         }))
     }
 })
-export const {clearResponses , clearResponsesByA} = responses.actions
+export const {clearResponses , clearResponsesByA , deleteResponseLocal} = responses.actions
 export default responses.reducer

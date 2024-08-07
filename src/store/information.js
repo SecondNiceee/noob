@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
-import { deleteAdvertisement } from "./saves";
 
 export const addWatch = createAsyncThunk(
   "information/addWatch",
@@ -493,6 +492,6 @@ export const {
   addResponce,
   changeStatus,
   getMoreMyAds,
-  deleteAdvertisements
+  deleteAdvertisement
 } = information.actions;
 export default information.reducer;

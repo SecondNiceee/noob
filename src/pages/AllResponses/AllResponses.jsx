@@ -121,7 +121,7 @@ const AllResponses = () => {
             "text" : "📣 ‼️Ваш отклик «" + text  + "» был удален в связи с нарушениями правил Коннект Биржи"
           }
         })
-        dispatch(deleteResponse(isShow.id))
+        dispatch((isShow.id))
         setShow(false)
         
 

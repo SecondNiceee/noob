@@ -20,7 +20,7 @@ import AboutReaction from "../MyAds/components/AboutReaction";
 import CardPage from "../CardPage/CardPage";
 import axios from "axios";
 import makeNewFile from "../../functions/newMakeFile";
-import { addResponce, deleteAdvertisements } from "../../store/information";
+import { addResponce, deleteAdvertisement, deleteAdvertisements } from "../../store/information";
 import Popup from "../Popup";
 
 let isDetailsActiveVar = false;
@@ -641,7 +641,7 @@ useEffect(() => {
           }
         })
 
-        dispatch(deleteAdvertisements(isShow.id))
+        dispatch(deleteAdvertisement(isShow.id))
         setShow(false)
 
       } catch (e) {

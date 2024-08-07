@@ -16,7 +16,7 @@ import FirstMenu from "./pages/FirstMenu/FirstMenu";
 
 import { fetchTon } from "./store/ton";
 import { fetchUserInfo } from "./store/telegramUserInfo";
-import { fetchMyOrders } from "./store/information";
+import { fetchMyOrders, fetchTasksInformation } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons, fetchValues } from "./store/shablon";
@@ -206,8 +206,9 @@ function App() {
   const me = useSelector((state) => state.telegramUserInfo);
 
   useEffect(() => {
-    // dispatch(fetchTon());
+    dispatch(fetchTon());
     // dispatch(fetchUserInfo());
+    dispatch(fetchTasksInformation(1))
     dispatch(fetchMyOrders(1));
     dispatch(fetchValues())
     // dispatch(fetchAllValues())

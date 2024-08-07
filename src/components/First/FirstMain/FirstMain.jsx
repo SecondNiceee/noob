@@ -46,7 +46,7 @@ const FirstMain = (
     }, [ordersInformation]);
 
 
-
+    console.log(ordersInformation)
     return (
       <div  className="FirstMain">
         {ordersInformation.length === 0 ? (
