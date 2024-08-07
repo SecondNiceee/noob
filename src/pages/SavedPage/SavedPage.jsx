@@ -324,6 +324,7 @@ const SavedPage = () => {
         );
         await axios.get("https://back-birga.ywa.su/user/sendMessage", {
           params: {
+            buttonId : "https://t.me/ConnectexBot/myapp",
             chatId: im.data.user.chatId,
             text:
               '📣 Вы получили отклик на задачу «' +
