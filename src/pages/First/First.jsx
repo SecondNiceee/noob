@@ -422,7 +422,7 @@ const forwardFunction = useCallback(() => {
                 params : {
                   "chatId" : par[1].advertisement.user.chatId,
                   "buttonUrl" : "https://t.me/ConnectexBot/myapp",
-                  "text" : '📣 Вы получили отклик на задачу «' + par[1].advertisement.taskName.bold() + '» от ' +  par[1].user.fl 
+                  "text" : '📣 Вы получили отклик на задачу «<b>' + par[1].advertisement.taskName.bold() + '</b>» от ' +  par[1].user.fl 
                 }
               })
 
@@ -637,8 +637,8 @@ useEffect(() => {
         await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
           params : {
             "chatId" : isShow.userId,
-            "buttonUrl" : "https://t.me/ConnectexBot/myapp",
-            "text" : "📣 ‼️Ваше объявление «" + isShow.taskName + "» было удалено в связи с нарушениями правил Коннект Биржи"
+            "buttonUrl" : "https://birga.ywa.su/MyAds",
+            "text" : "📣 ‼️Ваше объявление «<b>" + isShow.taskName + "</b>» было удалено в связи с нарушениями правил Коннект Биржи"
           }
         })
 

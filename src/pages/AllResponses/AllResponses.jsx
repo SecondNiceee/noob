@@ -117,8 +117,8 @@ const AllResponses = () => {
         await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
           params : {
             "chatId" : isShow.userId,
-            "buttonUrl" : "https://t.me/ConnectexBot/myapp",
-            "text" : "📣 ‼️Ваш отклик «" + text  + "» был удален в связи с нарушениями правил Коннект Биржи"
+            "buttonUrl" : "https://t.me/https://birga.ywa.su/MyAds",
+            "text" : "📣 ‼️Ваш отклик «<b>" + text  + "</b>» был удален в связи с нарушениями правил Коннект Биржи"
           }
         })
         dispatch(deleteResponseLocal(isShow.id))
